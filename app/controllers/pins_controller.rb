@@ -20,15 +20,31 @@ class PinsController < ApplicationController
 
   def create 			
 	@pin = Pin.create(pin_params)
-	if @pin.valid?
-		@pin.save
-		redirect_to pin_path(@pin)
-	else
-		@errors = @pin.errors
-		render :new
-	end	
+  	if @pin.valid?
+  		@pin.save
+  		redirect_to pin_path(@pin)
+  	else
+  		@errors = @pin.errors
+  		render :new
+  	end	
   end
 
+  def edit
+    @pin = Pin.find(params[:id])
+    render :edit
+  end
+
+  def update
+    @pin = Pin.find(params[:id])
+    
+    if @pin.update_attributes(pin_params)
+      @pin.save
+      redirect_to pin_path(@pin)
+    else
+      @errors = @pin.errors
+      render :edit
+    end
+  end
 
   private
  
