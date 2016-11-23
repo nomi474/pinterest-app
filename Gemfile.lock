@@ -200,7 +200,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  aws-sdk
+  aws-sdk (< 2.0)
   byebug
   coffee-rails (~> 4.1.0)
   database_cleaner
