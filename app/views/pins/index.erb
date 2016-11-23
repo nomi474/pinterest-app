@@ -32,6 +32,11 @@
             </div>
             <hr/>
             <p class="text"><%= "#{pin.text}" %></p>
+            <div>
+              <p>
+                <img src="<%= pin.image.url() %>"> <!-- :medium -->
+              </p>
+            </div>
           </div>
         </div>
       <% end %>

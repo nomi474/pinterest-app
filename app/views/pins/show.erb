@@ -11,10 +11,10 @@
   <hr/>
   <p>
     <b>Visit <%= "#{@pin.title}" %> at: </b>
-    <!--<a class="url" href="<%= "#{@pin.url}" %>" target="_blank">
-      <%= "#{@pin.url}" %>
-    </a>-->
     <%= link_to "#{@pin.url}", "#{@pin.url}" , html_options = {target: "_blank", class: "url"} %>
+  </p>
+  <p>
+    <img src="<%= "#{@pin.image.url()}" %>"> <!-- :medium -->
   </p>
 </div>
 <br/>
@@ -22,3 +22,6 @@
   <i class="fa fa-arrow-left"></i>
   Back to Home
 </a>
+    <!--<a class="url" href="<%= "#{@pin.url}" %>" target="_blank">
+      <%= "#{@pin.url}" %>
+    </a>-->
