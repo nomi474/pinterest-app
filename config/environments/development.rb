@@ -35,7 +35,7 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-
+  Aws.config[:ssl_ca_bundle] = 'C:\Users\Admin\Documents\RubyOnRails\pinterest-app\lib\ca-bundle.crt'
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   #Locataion for the convert program, which is the ImageMagick command-line utility that Paperclip needs to access.
@@ -45,6 +45,7 @@ Rails.application.configure do
   #'C:\Program Files (x86)\GnuWin32\bin'
   config.paperclip_defaults = {
   :storage => :s3,
+  :s3_region => "us-west-1",
   :s3_credentials => {
     :bucket => "skillcrush-rails",
     :access_key_id => "AKIAI4Y7CIUPPOFAYN2Q",
