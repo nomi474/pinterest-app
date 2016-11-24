@@ -38,7 +38,7 @@ class PinsController < ApplicationController
     @pin = Pin.find(params[:id])
     
     if @pin.update_attributes(pin_params)
-      @pin.save
+      #@pin.save
       redirect_to pin_path(@pin)
     else
       @errors = @pin.errors

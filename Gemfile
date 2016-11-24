@@ -47,5 +47,5 @@ end
 gem 'rspec'
 gem 'rspec-rails'
 gem 'tzinfo-data'
-gem 'paperclip'
-gem 'aws-sdk', '< 2.0'
+gem 'paperclip', '~>4.2'
+gem 'aws-sdk', '~> 2.0'

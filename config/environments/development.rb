@@ -39,8 +39,12 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   #Locataion for the convert program, which is the ImageMagick command-line utility that Paperclip needs to access.
-  Paperclip.options[:command_path] = 'C:\Windows\System32\convert.exe'
+  Paperclip.options[:command_path] = 'C:\Program Files (x86)\GnuWin32\bin'
+  #'C:\Windows\System32\convert.exe'
+  Paperclip.options[:content_type_mappings] = { jpg: "image/jpeg" }
   #'C:\Program Files (x86)\GnuWin32\bin'
+  #
+  #
   #config.paperclip_defaults = {
   #:storage => :s3,
   #:s3_credentials => {
