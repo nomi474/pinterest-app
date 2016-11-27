@@ -45,11 +45,11 @@ Rails.application.configure do
   #'C:\Program Files (x86)\GnuWin32\bin'
   #config.paperclip_defaults = {
   #:storage => :s3,
-  #:s3_region => "us-west-1",
   #:s3_credentials => {
    # :bucket => "skillcrush-rails",
-    #:access_key_id => "AKIAI4Y7CIUPPOFAYN2Q",
-    #:secret_access_key => "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"
+   # :access_key_id => "AKIAI4Y7CIUPPOFAYN2Q",
+   # :secret_access_key => "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",
+   # :s3_region => "us-west-1"
   #}
 #}
 end
