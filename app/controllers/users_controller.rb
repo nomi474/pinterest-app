@@ -64,6 +64,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def authenticate
+    @user = User.authenticate(params[:email], params[:password])
+      if !(@user.eql?nil)
+        redirect_to @user
+      else
+        #@errors = @user.errors
+        @errors = "You have entered an invalid email or password. Please try again."
+        render :login
+      end  
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
