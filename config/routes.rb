@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users, except: [:index]
 
-  get 'signup' => "users#new", as: :signup
+  get '/signup' => "users#new", as: :signup
 
   get '/login' => "users#login"
 

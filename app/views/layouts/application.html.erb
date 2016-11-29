@@ -11,5 +11,13 @@
   <div class="container">
     <%= yield %>
   </div>
+  <div class="pull-right">
+  <h3>
+    <% if ! session[:user_id]==nil %>
+    	<%= "Hi, #{current_user} !"%>
+    <% end %>
+  </h3>
+</div>
+<%= yield %>
 </body>
 </html>

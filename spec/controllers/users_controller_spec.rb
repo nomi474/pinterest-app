@@ -23,12 +23,26 @@ RSpec.describe UsersController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
+  before(:each) do 
+    @user = FactoryGirl.build(:user)
+  end
+  after(:each) do
+    @user.destroy
+  end
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+    first_name: @user.first_name,
+    last_name: @user.last_name,
+    email: @user.email,
+    password: @user.password
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+    first_name: @user.first_name,
+    password: @user.password
+    }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +117,18 @@ RSpec.describe UsersController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+        #check you code here
+        @user = FactoryGirl.create(:user)
+        }
       }
 
       it "updates the requested user" do
         user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => new_attributes}, valid_session
         user.reload
-        skip("Add assertions for updated state")
+        #check your code here for assertions
+        expect(User.find_by_email("amina@gmail.com").present?).to be(true)
       end
 
       it "assigns the requested user as @user" do
