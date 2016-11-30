@@ -117,10 +117,8 @@ RSpec.describe UsersController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        {
         #check you code here
         @user = FactoryGirl.create(:user)
-        }
       }
 
       it "updates the requested user" do

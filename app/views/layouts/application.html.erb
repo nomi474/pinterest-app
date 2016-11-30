@@ -9,15 +9,14 @@
 </head>
 <body>
   <div class="container">
-    <%= yield %>
-  </div>
-  <div class="pull-right">
-  <h3>
-    <% if ! session[:user_id]==nil %>
-    	<%= "Hi, #{current_user} !"%>
-    <% end %>
-  </h3>
-</div>
+  <% if !current_user.nil? %>
+  	<div class="user pull-right">
+      <h3>
+        <%= "Hi, #{current_user.first_name}!"%> |
+        <%= link_to "Logout", logout_path(current_user), method: :delete %>
+      </h3>
+    </div>
+  <% end %>
 <%= yield %>
 </body>
 </html>
