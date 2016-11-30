@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   post '/login' => "users#authenticate"
 
-  delete 'logout/:id' => "users#logout", as: :logout
+  delete '/logout/:id' => "users#logout", as: :logout
+  #get '/logout/:id' => "users#logout", as: :logout
 
 
   # The priority is based upon order of creation: first created -> highest priority.
