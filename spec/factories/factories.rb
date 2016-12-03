@@ -16,5 +16,18 @@ FactoryGirl.define do
     first_name "Skillcrush"
     last_name "Coder"
     password "secret"
-  end
-end 
+
+      after(:create) do |user|
+	    3.times do
+	      user.pinnings.create(pin: FactoryGirl.create(:pin))
+	    end
+	  end
+   end 
+
+   factory :pinning do
+   		pin
+   		user
+   end
+end
+
+

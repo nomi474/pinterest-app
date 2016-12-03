@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+private
     def require_login
       if current_user.nil?
         redirect_to :login

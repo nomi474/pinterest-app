@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/login' => "users#authenticate"
 
   delete '/logout/:id' => "users#logout", as: :logout
+
+
   #get '/logout/:id' => "users#logout", as: :logout
 
 
@@ -23,7 +25,8 @@ Rails.application.routes.draw do
 
   get "/pins/new" => "pins#new"
 
-  
+  post "pins/repin/:id" => "pins#repin", as: 'repin'
+ 
     
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
