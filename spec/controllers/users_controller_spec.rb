@@ -24,7 +24,7 @@ RSpec.describe UsersController, type: :controller do
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
   before(:each) do 
-    @user = FactoryGirl.build(:user)
+    @user = FactoryGirl.build(:user_with_boards)
   end
   after(:each) do
     @user.destroy

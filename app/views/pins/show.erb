@@ -24,17 +24,10 @@
   </p>
 </div>
 <br/>
-<%= link_to repin_path(@pin), class: "btn btn-default", method: "post" do %>
-  <!--<icon here?>-->
-  Repin!
-<% end %> 
+  <%= render partial: "shared/repin_form", locals: {pin: @pin} %>
 <p>
 <a href="/">
   <i class="fa fa-arrow-left"></i>
   Back to Home
 </a>
 </p>
-    <!--<a class="url" href="<%= "#{@pin.url}" %>" target="_blank">
-      <%= "#{@pin.url}" %>
-    </a>-->
-

@@ -21,6 +21,7 @@ before_action :require_login, only: [:index], except: [:show, :show_by_name]
 
   def new
   	@pin = Pin.new
+    @pin.pinnings.build
   	render :new
   end
 

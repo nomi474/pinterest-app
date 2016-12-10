@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users that I am Following</h1>
+
+<table border=3 >
+  <thead>
+    <tr>
+      <th>Following</th>
+      <th>Boards</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @followed.each do |following| %>
+      <tr>
+        <td><%= following.full_name %></td>
+          <% following.boards.each do |board| %>
+              <td><%= board.name %></td>
+          <% end %>          
+        <td><%= link_to 'Show', following %></td>
+        <td><%= link_to 'Edit', edit_follower_path(following) %></td>
+        <td><%= button_to 'Unfollow', following, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>Listing Followers</h1>
+
+<table border=3 >
+  <thead>
+    <tr>
+      <th>Followers</th>
+      <th>Boards</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if !@followed_by.nil? %>
+      <% @followed_by.each do |follower| %>
+        <tr>
+          <td><%= follower.user.first_name %></td>
+          <td><%= link_to 'Show', follower %></td>
+          <td><%= link_to 'Edit', edit_follower_path(follower) %></td>
+          <td><%= button_to 'Unfollow', follower, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Follower', new_follower_path %>

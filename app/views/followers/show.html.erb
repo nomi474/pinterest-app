@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Follower Id:</strong>
+  <%= @follower.follower_id %>
+</p>
+<p>
+  <strong>Follower User Name:</strong>
+  <%= @follower.user.first_name %>
+</p>
+<p>
+  <strong>Followed User names:</strong>
+  <% @followed.each do |user| %>
+    <%= user.first_name %>
+    <% user.boards.each do |board| %>
+    	<%=board.name %>
+    	<!--<%=board.pins%>-->
+    	<% board.pins.each do |pin| %>
+    		<%= pin.title %>
+    	<% end %>
+    <% end %>
+  <% end %>          
+</p>
+
+<%= link_to 'Edit', edit_follower_path(@follower) %> |
+<%= link_to 'Back', followers_path %>

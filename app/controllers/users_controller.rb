@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @followers = current_user.user_followers
   end
 
   # POST /users

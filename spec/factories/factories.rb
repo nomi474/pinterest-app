@@ -17,9 +17,10 @@ FactoryGirl.define do
     last_name "Coder"
     password "secret"
 
+    factory :user_with_boards do
       after(:create) do |user|
 	    3.times do
-	      user.pinnings.create(pin: FactoryGirl.create(:pin))
+	      user.pinnings.create(pin: FactoryGirl.create(:pin), board: user.boards.first)
 	    end
 	  end
    end 
