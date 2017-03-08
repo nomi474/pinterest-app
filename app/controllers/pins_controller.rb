@@ -1,6 +1,4 @@
 class PinsController < ApplicationController
-  # I need to add the index some how for before_action :require_login
-  #https://learn.skillcrush.com/skill-challenges/users-pins/
 before_action :require_login, only: [:index], except: [:show, :show_by_name]  
   
   def index

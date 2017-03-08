@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 # Use Puma as the web server
 gem 'puma'
@@ -35,7 +35,6 @@ gem 'tzinfo-data'
 gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
 gem 'aws-sdk', '~> 2.0'
 gem 'fog'
-gem 'bcrypt', '~> 3.1.7'
 
 group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,15 +42,16 @@ group :development do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
 end
 group :test do
 	gem 'shoulda-matchers'
-	gem 'spring'
 	gem 'database_cleaner'
 	gem 'rspec'
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'
+end
+
+group :test, :development do
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
 end
