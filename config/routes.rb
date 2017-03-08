@@ -3,8 +3,6 @@ Rails.application.routes.draw do
 
   resources :boards
 
-  resources :users, except: [:index]
-
   get '/signup' => "users#new", as: :signup
 
   get '/login' => "users#login"
@@ -13,7 +11,7 @@ Rails.application.routes.draw do
 
   delete '/logout/:id' => "users#logout", as: :logout
 
-
+  resources :users, except: [:index]
   #get '/logout/:id' => "users#logout", as: :logout
 
 
