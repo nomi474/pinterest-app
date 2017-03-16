@@ -11,15 +11,15 @@
   <div class="container">
   <% if logged_in? %>
        <div class="dropdown"> 
-        <button id="dropdownMenu1" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+        <button id="dropdownMenu1" class="btn pull-right btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
           <%= current_user.first_name %>
           <span class="caret"></span>
         </button>
      
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
           <% current_user.boards.each do |board| %>
             <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="/boards/"<%= board.id %>><%= board.name %>         
+              <a role="menuitem" tabindex="-1" href="/boards/<%= board.id %>"><%= board.name %>         
               </a>
             </li>
           <% end %>  

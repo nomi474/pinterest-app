@@ -49,7 +49,8 @@ before_action :set_pin, only: [:show, :edit, :update, :repin, :destroy]
 
   def repin
     @pin = Pin.find(params[:id])
-    @pin.pinnings.create(user: current_user)
+    board = Board.find(params[:pin][:pinning][:board_id])
+    @pin.pinnings.create(user: current_user, board: board)
     redirect_to user_path(current_user)
   end  
 
