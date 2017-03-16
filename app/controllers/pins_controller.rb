@@ -1,13 +1,12 @@
 class PinsController < ApplicationController
-before_action :require_login, only: [:index], except: [:show, :show_by_name]  
-  
-  def index
-    #@pins = current_user.pins
-    @pins = Pin.all
+before_action :require_login, except: [:index, :show, :show_by_name]  
+before_action :set_pin, only: [:show, :edit, :update, :repin, :destroy] 
+  def index    
+      #@pins = current_user.pins
+      @pins = Pin.all
   end
   
   def show
-    @pin = Pin.find(params[:id])
     @users = @pin.users
   end
   
@@ -35,13 +34,10 @@ before_action :require_login, only: [:index], except: [:show, :show_by_name]
   end
 
   def edit
-    @pin = Pin.find(params[:id])
     render :edit
   end
 
-  def update
-    @pin = Pin.find(params[:id])
-    
+  def update    
     if @pin.update_attributes(pin_params)
       #@pin.save
       redirect_to pin_path(@pin)
@@ -57,9 +53,24 @@ before_action :require_login, only: [:index], except: [:show, :show_by_name]
     redirect_to user_path(current_user)
   end  
 
+=begin
+  def destroy
+    @pin.destroy
+    respond_to do |format|
+      format.html { redirect_to pins_url, notice: 'Pin was successfully deleted.' }
+      format.json { head :no_content }
+    end
+  end
+=end
   private
  
+  # Use callbacks to share common setup or constraints between actions.
+  def set_pin
+     @pin = Pin.find(params[:id])
+  end
+
   def pin_params
     params.require(:pin).permit(:title, :url, :slug, :text, :category_id, :image, :user_id)
   end
+
 end

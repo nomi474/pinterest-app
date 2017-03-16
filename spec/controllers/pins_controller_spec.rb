@@ -1,21 +1,72 @@
 require 'spec_helper'
-RSpec.describe PinsController do
-	describe "GET index" do
- 
+
+RSpec.describe PinsController, type: :controller do
+  # This should return the minimal set of attributes required to create a valid
+  # User. As you add validations to User, be sure to
+  # adjust the attributes here as well.
+  before(:each) do 
+    @user = FactoryGirl.build(:user_with_boards)
+    login(@user)
+    @category = FactoryGirl.create(:category)
+    @pins = @user.pins
+    #@board = @user.boards.first
+    #@board_pinner = BoardPinner.create(user: @user, board: FactoryGirl.create(:board))
+    #@pin = FactoryGirl.create(:pin)
+  end
+  
+  after(:each) do
+    if !@user.destroyed?
+      @user.pinnings.destroy_all
+      @user.boards.destroy_all
+      #@user.pins.destroy_all
+      @user.destroy
+    end
+
+    category = Category.find_by_name("rails")
+      if !category.nil?
+         category.destroy
+    end  
+  end
+
+  let(:valid_attributes) {
+    {
+    first_name: @user.first_name,
+    last_name: @user.last_name,
+    email: @user.email,
+    password: @user.password
+    }
+  }
+
+  let(:invalid_attributes) {
+    {
+    first_name: @user.first_name,
+    password: @user.password
+    }
+  }
+
+  # This should return the minimal set of values that should be in the session
+  # in order to pass any filters (e.g. authentication) defined in
+  # UsersController. Be sure to keep this updated too.
+  let(:valid_session) { {} }
+
+
+	describe "GET index" do     
       it 'renders the index template' do
-        get :index
-        expect(response).to render_template("index")
+        user = User.create! valid_attributes
+        get :index, {:id => user.to_param}, valid_session
+        expect(response).to render_template(:index)
       end
-    
+   
        it 'populates @pins with all pins' do
 	      get :index
-	      expect(assigns[:pins]).to eq(Pin.all)
-	   end
+        expect(assigns[:pins]).to eq(Pin.all)
+	     end           
 	end
 
 	describe "GET new" do
     it 'responds with successfully' do
-      get :new
+      #user = User.create! valid_attributes
+      get :new #, {}, valid_session
       expect(response.success?).to be(true)
     end
     
@@ -83,7 +134,6 @@ RSpec.describe PinsController do
   end
   
   describe "GET edit" do	
-	
   	before(:each) do
   		@pin = Pin.find_by_slug("rails-tutorial")
   	end
@@ -114,7 +164,8 @@ RSpec.describe PinsController do
         url: "http://railswizard.org", 
         slug: "rails-wizard", 
         text: "A fun and helpful Rails Resource",
-        category_id: 2}    
+        category_id: 2
+      }    
     end
     
     after(:each) do
@@ -123,7 +174,7 @@ RSpec.describe PinsController do
         pin.destroy
       end
     end
-  	# responds with success
+  	# responds with a redirect
   	it 'responds with success' do
 	  post :update, pin: @pin_hash, id: @pin.id
       expect(response.redirect?).to be(true)

@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<h1>Log In</h1>
   <% if !(@errors.nil?) %>
     <div class="error">
       <h2><%= @errors %></h2>
@@ -6,11 +6,12 @@
   <% end %>
 <%= form_tag "/login" %>
     <label for="email"><strong>Enter email address: </strong></label>
-    <input id="email" name="email" type="text" />
+    <input id="email" name="email" type="email" />
     <p>
     <label for="password"><strong>Enter password:  </strong></label>
-    <input id="password" name="password" type="text" />
+    <input id="password" name="password" type="password" />
     </p>
     <p>
-    <input name="login" data-disable-with="Log in" type="submit" value="Log in" />
+    <!--<input name="login" data-disable-with="Log in" type="submit" value="Log in" />-->
+    <button name="button" type="submit" data-disable-with="Log in">Log in</button>
     </p>  

@@ -14,9 +14,9 @@
     <%= link_to "#{@pin.url}", "#{@pin.url}" , html_options = {target: "_blank", class: "url"} %>
   </p>
   <p>
-  This pin has been repinned by.... 
+  This pin has been pinned by... 
   <% @users.each do |user| %>
-    <%= user.first_name %>
+    <%= user.first_name %>, 
   <% end %> 
 </p>
   <p>

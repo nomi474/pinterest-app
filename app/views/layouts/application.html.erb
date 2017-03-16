@@ -49,6 +49,14 @@
         </ul>     
       </div>
   <% end %>
+  <% if !current_user.nil? %>
+    <div class="pull-right">
+      <h3>
+        <strong>Welcome <%= current_user.first_name %></strong> | 
+        <%= link_to "Logout", logout_path(current_user), method: :delete %>
+      </h3>
+    </div>
+  <% end %>
 <%= yield %>
 </div>
 </body>

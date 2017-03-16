@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = current_user
     @pins = current_user.pins
   end
 
@@ -80,7 +81,8 @@ class UsersController < ApplicationController
 
   def logout
     session.delete(:user_id)
-    redirect_to "/library"
+    redirect_to login_path
+    #redirect_to "/library"
   end
   
   private

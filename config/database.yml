@@ -18,5 +18,5 @@ test:
   <<: *default
   database: pinterest_test
 
-production:
+production: 
   url: <%= ENV['DATABASE_URL'] %>
