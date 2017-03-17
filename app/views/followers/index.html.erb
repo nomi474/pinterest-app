@@ -43,7 +43,7 @@
     <% if !@followed_by.nil? %>
       <% @followed_by.each do |follower| %>
         <tr>
-          <td><%= follower.user.first_name %></td>
+          <td><%= follower.full_name %></td>
           <td><%= link_to 'Show', follower %></td>
           <td><%= link_to 'Edit', edit_follower_path(follower) %></td>
           <td><%= button_to 'Unfollow', follower, method: :delete, data: { confirm: 'Are you sure?' } %></td>

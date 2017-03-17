@@ -1,23 +1,27 @@
 <p id="notice"><%= notice %></p>
+<!--
 <p>
-  <strong>Follower Id:</strong>
-  <%= @follower.follower_id %>
+  <h3>Follower Id:</h3>
+  <strong><%= @follower.follower_id %></strong>
+</p>
+-->
+<p>
+  <h3><strong>Follower User Name:</strong></h3>
+  <strong><%= @follower.user.first_name %></strong>
 </p>
 <p>
-  <strong>Follower User Name:</strong>
-  <%= @follower.user.first_name %>
-</p>
-<p>
-  <strong>Followed User names:</strong>
+  <h3><strong>Followed User names:</strong></h3>
+  <p>
   <% @followed.each do |user| %>
-    <%= user.first_name %>
-    <% user.boards.each do |board| %>
-    	<%=board.name %>
-    	<!--<%=board.pins%>-->
-    	<% board.pins.each do |pin| %>
-    		<%= pin.title %>
-    	<% end %>
+    <strong><%= user.first_name %></strong>
+    	<ul>
+        <% user.boards.each do |board| %>
+        <li>
+          <a href="/boards/<%=board.id%>"><%=board.name %></a> 
+        </li>
+      </ul>
     <% end %>
+  </p>
   <% end %>          
 </p>
 

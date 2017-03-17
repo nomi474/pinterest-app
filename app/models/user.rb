@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
         return nil
     end
 
+    # The users that I am following
     def followed
         Follower.where("follower_id=?", self.id).map{|f| f.user}
     end
@@ -27,6 +28,7 @@ class User < ActiveRecord::Base
         User.all - self.followed - [self]
     end
 
+    #Other users that are following me
     def user_followers
       self.followers.map{ |f| User.find(f.follower_id) }
     end

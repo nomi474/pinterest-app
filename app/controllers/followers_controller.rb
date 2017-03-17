@@ -6,7 +6,7 @@ class FollowersController < ApplicationController
   def index
     @followers = Follower.all    
     @followed = current_user.followed
-    #@followed_by = current_user.user_followers
+    @followed_by = current_user.user_followers
   end
 
   # GET /followers/1
@@ -28,6 +28,7 @@ class FollowersController < ApplicationController
 
     respond_to do |format|
       if @follower.save
+        @followed = current_user.followed        
         format.html { redirect_to @follower, notice: 'Follower was successfully created.' }
         format.json { render :show, status: :created, location: @follower }
       else

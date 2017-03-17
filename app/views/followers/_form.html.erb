@@ -17,10 +17,12 @@
     <%= f.label :user_name, value:  user_to_follow.first_name %><br>
   </div>
   <div class="field">
-    <%= f.label :boards_name, value:  user_to_follow.boards.each do |board|
-        board
-      end
-     %><br>
+    Boards: 
+    <% user_to_follow.boards.each do |board| %>
+    <!--Need to convert this into a form and provide user_id value as a hidden field-->
+        <a href="/boards/<%=board.id%>"><%= board.name %></a>,
+      <% end %>
+      <br>
   </div>
   <%= f.button :submit, class: "btn btn-default pinterest-theme-button" do %>
     <i class="fa fa-users"></i>
