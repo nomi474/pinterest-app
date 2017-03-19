@@ -1,9 +1,9 @@
 <h1>Rails Pinning-app</h1>
-<br/>
+
 <h2>Platform</h2>
-<br/>
+
 <h3>Languages Used</h3>
-<br/>
+
 <ul>
    <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
    <li><a href="https://www.javascript.com/">JavaScript</a></li>
@@ -33,8 +33,19 @@ To run this app you'll likely need a rough understanding of how Rails apps work 
     <li><a href="https://github.com/thoughtbot/paperclip/wiki">Paperclip gem</a></li>
 </ul>
 
-<h3></h3>3 is used in development
+<h3>S3 is used in development</h3>
 
 Due to the plugins used for handling uploads, S3 support is required even in development. It's not ideal, but you'll need to fill out those S3 keys in your .env file with details for your S3 bucket.
 
 In both development and production you will need to configure <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html">CORS</a> correctly on Amazon. 
+
+<h3>Testing with RSpec</h3>
+To start up the automated testing you might first need to create and migrate the test DB:
+
+RAILS_ENV=test rake db:create
+RAILS_ENV=test rake db:migrate
+
+Then you can start up the automated tests with:
+
+rake spec
+
