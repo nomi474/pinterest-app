@@ -1,5 +1,18 @@
 <h1>Rails Pinning-app</h1>
 
+<ul>
+   <li>Rails pinning-app is a practice web site that I have developed to sharpen my Ruby and Rails skills. The application mimics key features of famous social networking sites such as Twitter, LinkedIn, Pinterest etc. Here is a list of features that this app offers.
+   <ul>
+      <li>User registration and logging in/logging out functionality.</li>
+      <li>Posting new pins by uploading images. Updating existing pins is also possible.</li>
+      <li>Creating boards for various pin categories</li>
+      <li>Follow other users and also allow other users to follow you.</li>      
+   </ul>
+   </li>
+   <li>Initial app setup provided by <a href="https://github.com/skillcrush/rails-pinning-app">Skillcrush</a></li>
+   <li>Heavy contribution by Nauman Sheikh.</li>
+</ul>
+
 <h2>Platform</h2>
 
 <h3>Languages Used</h3>
@@ -32,6 +45,27 @@ To run this app you'll likely need a rough understanding of how Rails apps work 
     <li><a href="http://puma.io/">Puma Server</a></li>
     <li><a href="https://github.com/thoughtbot/paperclip/wiki">Paperclip gem</a></li>
 </ul>
+
+First, clone the repo (ideally from your own fork):
+
+<code>git clone git@github.com:nomi474/pinterest-app.git</code>
+
+Then move into that directory install the gems using Bundler:
+
+<code>bundle install</code>
+
+Next you will need to configure your database.yml file. 
+
+<code>cp config/database.example.yml config/database.yml</code>
+
+You'll likely need to edit those settings for your local machine.
+
+<p>Now you need to create and set up the database:</p>
+<p><code>rake db:setup</code></p>
+
+<blockquote>
+<p>In particular, you may want to check your username in psql with command: <code>$ psql</code> which should bring up your psql command line <code>username=#</code>. You can update your <code>config/database.yml</code> accordingly. Also,you may <a href="http://www.postgresql.org/docs/9.0/static/sql-createdatabase.html">create new PG database</a>.</p>
+</blockquote>
 
 <h3>S3 is used in development</h3>
 
