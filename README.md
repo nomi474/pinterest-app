@@ -76,8 +76,8 @@ In both development and production you will need to configure <a href="http://do
 <h3>Testing with RSpec</h3>
 To start up the automated testing you might first need to create and migrate the test DB:
 
-RAILS_ENV=test rake db:create
-RAILS_ENV=test rake db:migrate
+<code>RAILS_ENV=test rake db:create</code><br/>
+<code>RAILS_ENV=test rake db:migrate</code>
 
 Then you can start up the automated tests with:
 
